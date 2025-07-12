@@ -6,5 +6,5 @@ input.rounded-pill {
     border: solid grey 1px;
 }
 input.rounded-pill:hover {
-    box-shadow: 1px 1px 1px lightgrey;
+    box-shadow: 1px 1px 1px lightblue;
 }
