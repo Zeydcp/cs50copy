@@ -1,0 +1,24 @@
+.col-6 > p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.custom-hover-border {
+    border: 1px solid #dee2e6;
+    transition: 0.2s ease; /* Smooth transition effect */
+}
+
+.custom-hover-border:hover {
+    border-color: grey;
+}
+
+.container {
+    max-width: 90%;
+}
+
+.heart {
+    opacity: 0.5;
+}
