@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        <link href="styles.css" rel="stylesheet">
+        <title>My Webpage</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const search = "Search here...";
+                var temp = "";
+                for (let i = 0, n = search.length; i <= n; i++) {
+                    task(i);
+                }
+
+                function task(i) {
+                    setTimeout(function() {
+                        document.getElementById('myText').placeholder = temp;
+                        temp += search[i];
+                    }, 250 * i);
+                }
+
+                document.getElementById('myText').addEventListener('keypress', function(event) {
+                    if (event.key == "Enter") {
+                        submission = document.getElementById('myText').value.toLowerCase();
+                        if (submission == 'about me' || submission == 'extracurriculars' || submission == 'interests') {
+                            document.location.href = './' + submission.replace(/ /g,'') + '.html';
+                        }
+                    }
+                })
+            });
+        </script>
+    </head>
+    <body>
+        <nav class="navbar navbar-custom navbar-dark navbar-expand-lg text-center">
+            <div class="container justify-content-center">
+                <a class="navbar-brand" href="./index.html"><img src="6.png" height="70" alt="homepage"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse flex-grow-0" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" href="./aboutme.html">About Me</a>
+                        <a class="nav-link" href="./extracurricular.html">Extracurricular</a>
+                        <a class="nav-link" href="./interests.html">Interests</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <input type='text' id="myText">
+            <div class="row" id="squircle1">
+                <div class="col">
+                    <a class="nav-link" href="./aboutme.html"><div class="squircle2">
+                        <h2>About Me</h2>
+                        <hr style="width: 100%">
+                        <h5>Click to learn more about me</h5>
+                        <span>Read about my life adventures and experiences.</span>
+                    </div></a>
+                </div>
+                <div class="col">
+                    <a class="nav-link" href="./extracurricular.html"><div class="squircle2">
+                        <h2>Extracurricular</h2>
+                        <hr style="width: 100%">
+                        <h5>Click to see extracurriculars</h5>
+                        <span>Read about the extracurricular activities I partake in.</span>
+                    </div></a>
+                </div>
+                <div class="col">
+                    <a class="nav-link" href="./interests.html"><div class="squircle2">
+                        <h2>Interests</h2>
+                        <hr style="width: 100%">
+                        <h5>Click to see interests</h5>
+                        <span>Read about the interests I have in this worldly life.</span>
+                    </div></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

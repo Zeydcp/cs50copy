@@ -1,0 +1,30 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class="container vh-100">
+        <div class="row mb-3">
+            <h2>Active Listings</h2>
+        </div>
+        {% for listing in listings %}
+            <a href="{% url 'listing_page' listing.id %}" class="text-decoration-none text-reset">
+                <div class="row custom-hover-border rounded mb-3 text-break h-25">
+                    <div class="col-2 text-center" id="index_div">
+                        {% if listing.image %}
+                            <img src={{ listing.image.url }} alt={{ listing.title }}>
+                        {% endif %}
+                    </div>
+                    <div class="col-4 my-auto">
+                        <h4>{{ listing.title }}</h4>
+                        <p class="text-secondary font-weight-light">Bid from ${{ listing.price }}</p>
+                    </div>
+                    <div class="col-6 my-auto">
+                        <p>
+                            {{ listing.description }}
+                        </p>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
+

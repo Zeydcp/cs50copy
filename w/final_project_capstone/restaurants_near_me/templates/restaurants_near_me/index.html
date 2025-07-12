@@ -1,0 +1,15 @@
+{% extends "restaurants_near_me/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div class="container vh-100">
+        <div class="row mb-3">
+            <h2>Restaurants Near Me</h2>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block script %}
+    <script src="{% static 'restaurants_near_me/restaurant.js' %}"></script>
+{% endblock %}

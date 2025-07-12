@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Advanced Search</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="text-right m-2">
+            <a href="index.html" class="pr-2 text-dark">Google Search</a>
+        </div>
+        <form action="https://google.com/search" class="container ml-4">
+            <h1 class="text-danger row col-4">Advanced Search</h1>
+            <h5 class="row col-4 pt-5">Find pages with...</h5>
+            <div class="row pt-4">
+                <div class="col-3">all these words:</div>
+                <div class="col-6 offset-md-1"><input type="text" name="as_q" class="rounded border w-100"></div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-3">this exact word or phrase:</div>
+                <div class="col-6 offset-md-1"><input type="text" name="as_epq" class="rounded border w-100"></div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-3">any of these words:</div>
+                <div class="col-6 offset-md-1"><input type="text" name="as_oq" class="rounded border w-100"></div>
+            </div>
+            <div class="row pt-3">
+                <div class="col-3">none of these words:</div>
+                <div class="col-6 offset-md-1"><input type="text" name="as_eq" class="rounded border w-100"></div>
+            </div>
+            <div class="text-center row col-4 pt-3">
+                <input type="submit" value="Advanced Search" class="rounded btn-primary">
+            </div>
+        </form>
+    </body>
+</html>

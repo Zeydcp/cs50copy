@@ -1,0 +1,21 @@
+<div class="editable-review d-none">
+    <form method="POST" class="edit-form"
+    data-reviewID="{{ review.id }}"
+    data-rating="{{ review.rating }}">
+        {% csrf_token %}
+        <h5 class="card-title">
+            {% spaceless %}
+                <div class="form-group rating">
+                    {% for star in review_form.rating reversed %}
+                        {{ star.tag }}<label for={{ star.id_for_label }}>⭐</label>
+                    {% endfor %}
+                </div>
+            {% endspaceless %}
+        </h5>
+        <p class="form-group card-text">
+            {{ review_form.review }}
+        </p>
+        <button type="submit" class="btn btn-sm btn-success ms-2">Save</button>
+        <button type="button" class="btn btn-sm btn-secondary ms-1 cancel-review-btn">Cancel</button>
+    </form>
+</div>

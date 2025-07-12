@@ -1,0 +1,4 @@
+SELECT AVG(energy), AVG(valence), AVG(danceability) FROM songs;
+
+There may be a big variance in listening time between their top song and their 100th song, yet in the calculations they have the same weighting.
+A better way to calculate it would be by taking a weighted average for each of these columns with higher weightings at the top of the list.

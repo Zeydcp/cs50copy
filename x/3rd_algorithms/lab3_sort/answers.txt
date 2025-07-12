@@ -1,0 +1,11 @@
+sort1 uses: Bubble sort
+
+How do you know?: Time elapsed for sorted50000 and reversed50000 differs greatly which aligns with Ω(n) lower bound and O(n^2) upper bound.
+
+sort2 uses: Merge sort
+
+How do you know?: Time elapsed for sorted50000 and reversed50000 is similar which aligns with Θ(nlogn) time complexity.
+
+sort3 uses: Selection sort
+
+How do you know?: Time elapsed for sorted50000 and reversed50000 is relatively the largest and similar which aligns with Θ(n^2) time complexity.

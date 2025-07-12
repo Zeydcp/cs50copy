@@ -1,0 +1,84 @@
+body {
+    padding: 10px;
+}
+
+.col-6>p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.custom-hover-border {
+    border: 1px solid #c7c5c5;
+    transition: 0.2s ease;
+    /* Smooth transition effect */
+}
+
+.custom-hover-border:hover {
+    border-color: grey;
+}
+
+.col-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.col-2>img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    /* keeps image square */
+}
+
+#index_div,
+#listing_div {
+    height: 100%;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+}
+
+/* Highlight stars when hovered */
+.rating input {
+    display: none;
+}
+
+.rating label {
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.2s;
+}
+
+.rating input:checked~label,
+.rating label:hover,
+.rating label:hover~label {
+    opacity: 1;
+}
+
+.restaurant-image {
+    width: 30%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+}
+
+.heart,
+.unpicked {
+    opacity: 0.5;
+}
+
+.heart:hover {
+    opacity: 1;
+}
+
+span,
+.rating label {
+    font-size: 1rem;
+}

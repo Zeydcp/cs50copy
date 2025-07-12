@@ -1,0 +1,136 @@
+{% extends "restaurants_near_me/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col">
+                <h1 class="display-5">{{ restaurant.name }}</h1>
+                <p class="text-muted">
+                    Average Rating:
+                    {% spaceless %}
+                        {% for i in "1234"|make_list %}
+                            {% if forloop.counter <= restaurant.rating %}
+                                <span class="span-{{ restaurant.id }}">⭐</span>
+                            {% else %}
+                                <span class="span-{{ restaurant.id }} unpicked">⭐</span>
+                            {% endif %}
+                        {% endfor %}
+                    {% endspaceless %}
+                </p>
+            </div>
+        </div>
+
+        {% if restaurant.image %}
+            <div class="row mb-3">
+                <div class="col">
+                    <img src="{{ restaurant.image }}" alt="{{ restaurant.name }}" class="restaurant-image">
+                </div>
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col">
+                <form id="review-form" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ first_form.review }}
+                    </div>
+                    {% spaceless %}
+                        <div class="form-group rating">
+                            {% for star in first_form.rating reversed %}
+                                {{ star.tag }}<label for={{ star.id_for_label }}>⭐</label>
+                            {% endfor %}
+                        </div>
+                    {% endspaceless %}
+
+                    <button type="submit" name="submit_index" value="0" class="btn btn-primary mb-2 submit-btn">Submit Review</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="review-list">
+            {% for review, review_form in review_data %}
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <!-- Static Stars Display -->
+                        <div class="static-review">
+                            <h5 class="card-title mb-0">
+                                {% spaceless %}
+                                    {% for i in "1234"|make_list %}
+                                        {% if forloop.counter <= review.rating %}
+                                            <span class="span-{{ review.id }}">⭐</span>
+                                        {% else %}
+                                            <span class="span-{{ review.id }} unpicked">⭐</span>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endspaceless %}
+                                {% if user == review.user %}
+                                    <button
+                                    type="button"
+                                    data-reviewID="{{ review.id }}"
+                                    class="btn btn-sm btn-outline-primary edit-review-btn">
+                                        Edit
+                                    </button>
+                                    <button
+                                    type="button"
+                                    data-reviewID="{{ review.id }}"
+                                    class="btn btn-sm btn-danger delete-review-btn">
+                                        Delete
+                                    </button>
+                                {% endif %}
+                            </h5>
+                            {% if review.edited %}
+                                <span class="text-secondary espan-{{ review.id }}">Edited</span>
+                            {% endif %}
+                            <p class="card-text" id="{{ review.id }}">{{ review.review }}</p>
+                        </div>
+                        <!-- Editable review Form -->
+                        <div class="editable-review d-none">
+                            <form method="POST" class="edit-form"
+                            data-reviewID="{{ review.id }}"
+                            data-rating="{{ review.rating }}">
+                                {% csrf_token %}
+                                <h5 class="card-title mb-0">
+                                    {% spaceless %}
+                                        <div class="form-group rating">
+                                            {% for star in review_form.rating reversed %}
+                                                {{ star.tag }}<label for={{ star.id_for_label }}>⭐</label>
+                                            {% endfor %}
+                                        </div>
+                                    {% endspaceless %}
+                                </h5>
+                                <p class="form-group card-text">
+                                    {{ review_form.review }}
+                                </p>
+                                <button type="submit" class="btn btn-sm btn-success ms-2">Save</button>
+                                <button type="button" class="btn btn-sm btn-secondary ms-1 cancel-review-btn">Cancel</button>
+                            </form>
+                        </div>
+                        <table>
+                            <tr>
+                                <td>
+                                    {% if review.id in user.reviews_liked %}
+                                        <button data-reviewID="{{ review.id }}" class="btn p-0 mb-1 like" type="button">
+                                            ❤️
+                                        </button>
+                                    {% else %}
+                                        <button data-reviewID="{{ review.id }}" class="btn p-0 mb-1 heart like" type="button">
+                                            ❤️
+                                        </button>
+                                    {% endif %}
+                                </td>
+                                <td class="text-secondary">{{ review.like_count }}</td>
+                            </tr>
+                        </table>
+                        <small class="text-muted">By {{ review.user.username }}</small>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block script %}
+    <script src="{% static 'restaurants_near_me/reviews.js' %}"></script>
+{% endblock %}
