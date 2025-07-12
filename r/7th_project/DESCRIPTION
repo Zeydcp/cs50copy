@@ -1,0 +1,10 @@
+Package: olympics
+Title: Olympic Medals Analysis and Visualization
+Description: Package that includes analysis function and visualizations for olympics medalists csv. Data sourced from Data Is Plural.
+Version: 1.0.0
+Authors@R: person("Zeyd", "Chamsi-Pasha", email = "zchamsipasha@gmail.com", role = c("aut", "cre", "cph"))
+License: MIT + file LICENSE
+Video: https://www.youtube.com/watch?v=vQVz9j-CUE0
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
